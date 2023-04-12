@@ -2,6 +2,7 @@ import './bootstrap.min.css';
 import React from 'react';
 import HomePage from './homepage.js';
 import ContactUs from './contactus.js';
+import AboutUs from './aboutus.js';
 
 /*
 Copy the Web Chat code from Watson Assitant and paste it here
@@ -10,17 +11,21 @@ Copy the Web Chat code from Watson Assitant and paste it here
 class App extends React.Component {
 
   state = {
-    pageshown:<HomePage/>
+    pageshown: <HomePage />
   }
 
-  setPageHome = ()=> {
-    this.setState({pageshown:<HomePage/>});    
+  setPageHome = () => {
+    this.setState({ pageshown: <HomePage /> });
   }
-  
-  setPageContactUs = ()=> {
-    this.setState({pageshown:<ContactUs/>});    
+
+  setPageContactUs = () => {
+    this.setState({ pageshown: <ContactUs /> });
   }
-  
+
+  setPageAbout = () => {
+    this.setState({ pageshown: <AboutUs /> });
+  }
+
   render() {
     return (
       <div>
@@ -30,13 +35,14 @@ class App extends React.Component {
               <li class="nav-item active">
                 <a class="nav-link" href="#" onClick={this.setPageHome}>Home <span class="sr-only">(current)</span></a>
               </li>
-                /*
-                Add more tabs and action items for the tabs to give the dealership website a real feel. 
-                */
-        
               <li class="nav-item">
                 <a class="nav-link" href="#" onClick={this.setPageContactUs}>Contact Us</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onClick={this.setPageAbout}>About</a>
+              </li>
+
+
             </ul>
           </div>
         </nav>
