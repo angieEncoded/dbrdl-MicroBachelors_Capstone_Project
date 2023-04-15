@@ -3,6 +3,7 @@ import React from 'react';
 import HomePage from './homepage.js';
 import ContactUs from './contactus.js';
 import AboutUs from './aboutus.js';
+import './index.css'
 
 window.watsonAssistantChatOptions = {
   integrationID: "461800c3-ee75-4fc2-a920-e89091a88e2a", // The ID of this integration.
@@ -19,35 +20,41 @@ setTimeout(function () {
 class App extends React.Component {
 
   state = {
-    pageshown: <HomePage />
+    pageshown: <HomePage />, activeHome: true, activeContact: false, activeAbout: false
   }
 
   setPageHome = () => {
-    this.setState({ pageshown: <HomePage /> });
+    this.setState({ pageshown: <HomePage />, activeHome: true, activeContact: false, activeAbout: false });
   }
 
   setPageContactUs = () => {
-    this.setState({ pageshown: <ContactUs /> });
+    this.setState({ pageshown: <ContactUs />, activeHome: false, activeContact: true, activeAbout: false });
   }
 
   setPageAbout = () => {
-    this.setState({ pageshown: <AboutUs /> });
+    this.setState({ pageshown: <AboutUs />, activeHome: false, activeContact: false, activeAbout: true });
   }
+
 
   render() {
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="navbar-collapse" id="navbarTogglerDemo01">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" href="#" onClick={this.setPageHome}>Home <span class="sr-only">(current)</span></a>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+
+          <a className="navbar-brand" href="#" onClick={this.setPageHome}>
+            <i className="bi bi-car-front" style={{ color: '#7946e6' }}></i>
+            <span className="ml-3">Best Cars</span>
+          </a>
+          <div className="navbar-collapse" id="navbarTogglerDemo01">
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li className={`nav-item ${this.state.activeHome ? 'active' : ''}`}>
+                <a className="nav-link" href="#" onClick={this.setPageHome}>Home <span className="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" onClick={this.setPageContactUs}>Contact Us</a>
+              <li className={`nav-item ${this.state.activeAbout ? 'active' : ''}`}>
+                <a className="nav-link" href="#" onClick={this.setPageAbout}>About</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" onClick={this.setPageAbout}>About</a>
+              <li className={`nav-item ${this.state.activeContact ? 'active' : ''}`}>
+                <a className="nav-link" href="#" onClick={this.setPageContactUs}>Contact Us</a>
               </li>
 
 
